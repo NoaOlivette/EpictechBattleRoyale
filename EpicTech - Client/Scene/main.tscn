@@ -24,3 +24,17 @@ margin_left = -512.0
 margin_top = -300.0
 margin_right = -212.0
 margin_bottom = 300.0
+
+[node name="Spectate" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -118.0
+margin_top = -37.0
+margin_right = 118.0
+margin_bottom = -23.0
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Spectate"]
+texture = ExtResource( 2 )

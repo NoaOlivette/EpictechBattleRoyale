@@ -74,14 +74,18 @@ remotesync func getHit(idShooter:int, idVictim:int):
 		if self.is_network_master():
 			healthBar.value -= bulletDamage
 			if healthBar.value <= 0:
-				rpc("imDead", idShooter, idVictim)
+				rpc("playerDead", idVictim)
+				var playerShooter = Persist.get_node(str(idShooter))
+				playerShooter.setCurrentCam()
+				
+				get_tree().setSpectate(Server.getpseudoById(idShooter))
+				
 				Server.sendKill(Server.getpseudoById(idShooter), Server.getpseudoById(idVictim))
 
-remotesync func imDead(idShooter:int, idVictim:int):
+remotesync func playerDead(idVictim:int):
 	var playerVictim = Persist.get_node(str(idVictim))
-	var playerShooter = Persist.get_node(str(idShooter))
-	playerShooter.setCurrentCam()
 	playerVictim.queue_free()
+	
 
 func _on_Hitbox_area_entered(area):
 	if self.is_network_master():

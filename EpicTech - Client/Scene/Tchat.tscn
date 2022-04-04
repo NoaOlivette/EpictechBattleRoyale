@@ -29,3 +29,9 @@ margin_top = -391.0
 margin_right = 252.0
 margin_bottom = -61.0
 custom_constants/separation = 15
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -2,6 +2,8 @@ extends Node2D
 
 onready var player:PackedScene = preload("res://Scene/Player.tscn")
 
+onready var spectateLabel:Label = $CanvasLayer/Spectate
+
 func _ready():
 	print(Server.playersId)
 	for id in Server.playersId:
@@ -15,3 +17,7 @@ func _ready():
 		if id == Server.peerId:
 			child.setCurrentCam()
 		
+
+func setSpectate(pseudo:String):
+	spectateLabel.text = "Spectate : " + pseudo
+	spectateLabel.show()
