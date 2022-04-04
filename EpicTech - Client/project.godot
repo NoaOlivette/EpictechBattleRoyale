@@ -21,7 +21,7 @@ Persist="*res://Scene/Persist.tscn"
 
 [debug]
 
-multirun/number_of_windows=3
+multirun/number_of_windows=4
 multirun/window_distance=1700
 multirun/add_custom_args=true
 multirun/first_window_args="listen"

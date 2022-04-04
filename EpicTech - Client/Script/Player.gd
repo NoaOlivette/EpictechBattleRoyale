@@ -78,13 +78,23 @@ remotesync func getHit(idShooter:int, idVictim:int):
 				var playerShooter = Persist.get_node(str(idShooter))
 				playerShooter.setCurrentCam()
 				
-				get_tree().setSpectate(Server.getpseudoById(idShooter))
+				
+				
+				var playerVictim = Persist.get_node(str(idVictim))
+				playerVictim.queue_free()
+				
+#				print(get_node("/root/main").name)
+				get_node("/root/main").setSpectate(Server.getpseudoById(idShooter))
+				get_node("/root/main").playerDead(idVictim)
+				
 				
 				Server.sendKill(Server.getpseudoById(idShooter), Server.getpseudoById(idVictim))
 
-remotesync func playerDead(idVictim:int):
+remote func playerDead(idVictim:int):
+	get_node("/root/main").playerDead(idVictim)
 	var playerVictim = Persist.get_node(str(idVictim))
 	playerVictim.queue_free()
+	
 	
 
 func _on_Hitbox_area_entered(area):
